@@ -1,9 +1,15 @@
 <?php
-  if($_COOKIE["connected"] == "true") {?>
+  $privateaccess="false";
+  if(!isset($_COOKIE["connected"])){
+    setcookie("connected","false");
+  } else if ($_COOKIE["connected"]== "true") {
+    ?>
     Welcome to your super-safe private page !
-  <?php
-  } else {
-    setcookie("connected","false");?>
+    <?php
+    $privateaccess="true";
+  }
+  if($privateaccess=="false") {
+    ?>
     <form method="post" action="">
        Username :<br>
        <input type="text" name="username" /><br>
